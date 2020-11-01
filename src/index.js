@@ -43,14 +43,10 @@ function fTimezone(timezone){
 }
 class DateJs{
   constructor(time, config) {
-    if ((typeof time).toLowerCase() === 'object'){
-      this.time = fTime(time.time);
-    } else {
-      this.time = fTime(time);
-    }
     this.defaultConfig = {
       zone: -(new Date().getTimezoneOffset() / 60),
     }
+    this.time = fTime(time);
     this.config = {
       ...this.defaultConfig,
       ...(fConfig(config))
@@ -82,6 +78,10 @@ class DateJs{
       "SSS": upZero(date.getMilliseconds()),
     }
     return format.replace(/YYYY/g, time.YYYY).replace(/YY/g, time.YY).replace(/MM/g, time.MM).replace(/DD/g, time.DD).replace(/hh/g, time.hh).replace(/mm/g, time.mm).replace(/ss/g, time.ss).replace(/SSS/g, time.SSS).replace(/SS/g, time.SS);
+  }
+  stamp(){
+    // return
+    return new Date(this.format(this.config.format)).getTime();
   }
 }
 export default DateJs;
