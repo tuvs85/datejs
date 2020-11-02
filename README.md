@@ -1,2 +1,0 @@
-# datejs
- format time show
