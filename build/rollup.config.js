@@ -14,7 +14,7 @@ module.exports = [
     output: {
       file: resolveFile('dist/index.umd.js'),
       format: 'umd',
-      name: 'DateJs',
+      name: 'dateJs',
       amd: {
         id: 'lib/dateJs'
       },
