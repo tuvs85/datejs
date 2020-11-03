@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9dc8030e-3478-4e21-87e3-5faee2cce79c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/datejs.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/module/upTime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/rollupDemo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module/formatTime.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/module/formatTime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module/isDateJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/module/isDateJs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module/upZero.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/module/upZero.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +42,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604411109549</updated>
-      <workItem from="1604411110759" duration="4011000" />
+      <workItem from="1604411110759" duration="6093000" />
     </task>
     <servers />
   </component>

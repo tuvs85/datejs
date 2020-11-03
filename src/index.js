@@ -80,6 +80,7 @@ class DateJs{
     return new Date(this.format(this.config.format)).getTime();
   }
   countDown(downTime,format){
+    downTime = upTime(downTime);
     if (!format){
       setTimeout(()=>{
         DateJs.prototype.time = new Date(Number(DateJs.prototype.time) + 1000);
@@ -87,20 +88,19 @@ class DateJs{
       if (!downTime){
         return 0;
       }
-      downTime = upTime(downTime);
       if (this.time - downTime <0){
-        return downTime - this.time;
+        return (downTime - this.time) / 1000;
       }
-      return this.time - downTime;
+      return (this.time - downTime) / 1000;
     }
-    let countTime = this.time - downTime;
+    let countTime = (this.time - downTime) / 1000;
     if (countTime <0){
-      countTime = downTime - this.time;
+      countTime = (downTime - this.time) / 1000;
     }
-    let d = parseInt(countTime / 60 / 60 / 24);
-    let h = parseInt(countTime / 60 / 60 % 24);
-    let m = parseInt(countTime / 60 % 60);
-    let s = parseInt(countTime % 60);
+    let d = upZero(parseInt(countTime / 60 / 60 / 24));
+    let h = upZero(parseInt(countTime / 60 / 60 % 24));
+    let m = upZero(parseInt(countTime / 60 % 60));
+    let s = upZero(parseInt(countTime % 60));
     return format.replace(/DD/g, d).replace(/HH/g, h).replace(/MM/g, m).replace(/SS/g, s);
   }
 }
