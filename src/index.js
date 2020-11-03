@@ -1,20 +1,21 @@
 import formatTime from "./module/formatTime";
 import formatConfig from "./module/formatConfig";
 import upZero from "./module/upZero";
+import upTime from "./module/upTime";
 import formatTimeZone from "./module/formatTimeZone";
 import isDateJs from "./module/isDateJs";
 
 class DateJs{
   constructor(time, config) {
-    this.defaultConfig = {
-      zone: -(new Date().getTimezoneOffset() / 60),
+    DateJs.prototype.defaultConfig = {
+      zone: -(new Date().getTimezoneOffset() / 60)
     }
-    this.time = formatTime(time);
-    this.config = {
+    DateJs.prototype.time = formatTime(time) || Date.now();
+    DateJs.prototype.config = {
       ...this.defaultConfig,
       ...(formatConfig(config))
     }
-    this.__isDay__ = true;
+    DateJs.prototype.__isDay__ = true;
     this.init()
   }
   init(){
@@ -26,14 +27,18 @@ class DateJs{
       "$m": this.$m,
       "$s": this.$s,
       "$S": this.$S,
+      "$stamps": this.$stamps,
+      "$stamp": this.$stamp,
     } = {
-      "$Y": date.getFullYear(),
+      "$Y": upZero(date.getFullYear()),
       "$M": upZero(date.getMonth()),
       "$D": upZero(date.getDate()),
       "$h": upZero(date.getHours()),
       "$m": upZero(date.getMinutes()),
       "$s": upZero(date.getSeconds()),
       "$S": upZero(date.getMilliseconds()),
+      "$stamps": date.getTime(),
+      "$stamp": parseInt(date.getTime() / 1000),
     });
   }
   toZone(timezone = ''){
@@ -72,12 +77,35 @@ class DateJs{
       .replace(/SS/g, time.SS);
   }
   stamp(){
-    // return
     return new Date(this.format(this.config.format)).getTime();
+  }
+  countDown(downTime,format){
+    if (!format){
+      setTimeout(()=>{
+        DateJs.prototype.time = new Date(Number(DateJs.prototype.time) + 1000);
+      },1000)
+      if (!downTime){
+        return 0;
+      }
+      downTime = upTime(downTime);
+      if (this.time - downTime <0){
+        return downTime - this.time;
+      }
+      return this.time - downTime;
+    }
+    let countTime = this.time - downTime;
+    if (countTime <0){
+      countTime = downTime - this.time;
+    }
+    let d = parseInt(countTime / 60 / 60 / 24);
+    let h = parseInt(countTime / 60 / 60 % 24);
+    let m = parseInt(countTime / 60 % 60);
+    let s = parseInt(countTime % 60);
+    return format.replace(/DD/g, d).replace(/HH/g, h).replace(/MM/g, m).replace(/SS/g, s);
   }
 }
 function dateJs(time,config){
-  if (isDateJs(time)){
+  if (isDateJs(this)){
     return time;
   }
   return new DateJs(time,config)

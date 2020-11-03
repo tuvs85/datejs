@@ -1,4 +1,5 @@
 function formatTime(time){
+  if (!time)return new Date();
   if ((typeof time).toLowerCase() === 'number'){
     return new Date(((time).toString().length === 10)?(time * 1000): time)
   }
