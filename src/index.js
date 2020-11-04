@@ -81,15 +81,9 @@ class DateJs{
   stamp(){
     return new Date(this.format(this.config.format)).getTime();
   }
-  countDown(downTime,format, autoCount){
+  countDown(downTime,format){
     downTime = upTime(downTime);
     if (!format){
-      if (autoCount){
-        setInterval(()=>{
-          DateJs.prototype.time = new Date(Number(DateJs.prototype.time) + 1000);
-          this.countDown(downTime,format, false)
-        },1000)
-      }
       if (!downTime){
         return 0;
       }
@@ -99,7 +93,7 @@ class DateJs{
       return (this.time - downTime) / 1000;
     }
     let countTime = (this.time - downTime) / 1000;
-    if (countTime <0){
+    if (countTime < 0){
       countTime = (downTime - this.time) / 1000;
     }
     let d = upZero(parseInt(countTime / 60 / 60 / 24));
