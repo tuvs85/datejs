@@ -29,6 +29,7 @@ class DateJs{
       "$S": this.$S,
       "$stamps": this.$stamps,
       "$stamp": this.$stamp,
+      "$z": this.$z
     } = {
       "$Y": upZero(date.getFullYear()),
       "$M": upZero(date.getMonth()),
@@ -39,6 +40,7 @@ class DateJs{
       "$S": upZero(date.getMilliseconds()),
       "$stamps": date.getTime(),
       "$stamp": parseInt(date.getTime() / 1000),
+      "$z": this.config.zone
     });
   }
   toZone(timezone = ''){
@@ -79,12 +81,15 @@ class DateJs{
   stamp(){
     return new Date(this.format(this.config.format)).getTime();
   }
-  countDown(downTime,format){
+  countDown(downTime,format, autoCount){
     downTime = upTime(downTime);
     if (!format){
-      setTimeout(()=>{
-        DateJs.prototype.time = new Date(Number(DateJs.prototype.time) + 1000);
-      },1000)
+      if (autoCount){
+        setInterval(()=>{
+          DateJs.prototype.time = new Date(Number(DateJs.prototype.time) + 1000);
+          this.countDown(downTime,format, false)
+        },1000)
+      }
       if (!downTime){
         return 0;
       }
@@ -101,7 +106,28 @@ class DateJs{
     let h = upZero(parseInt(countTime / 60 / 60 % 24));
     let m = upZero(parseInt(countTime / 60 % 60));
     let s = upZero(parseInt(countTime % 60));
-    return format.replace(/DD/g, d).replace(/HH/g, h).replace(/MM/g, m).replace(/SS/g, s);
+    let formatMap = {
+      'DD': /DD/g.test(format),
+      'HH': /HH/g.test(format),
+      'mm': /mm/g.test(format),
+      'ss': /ss/g.test(format),
+    }
+    if (Object.values(formatMap).every(item=>item)){
+      return format.replace(/DD/g, d).replace(/HH/g, h).replace(/mm/g, m).replace(/ss/g, s);
+    }
+    if (formatMap['DD']){
+      return format.replace(/DD/g, d);
+    }else{
+      if (formatMap['HH']){
+        return format.replace(/HH/g, parseInt(countTime / 3600)).replace(/mm/g, m).replace(/ss/g, s);
+      }
+      if (formatMap['mm']){
+        return format.replace(/mm/g, parseInt(countTime / 60)).replace(/ss/g, s);
+      }
+      if (formatMap['ss']){
+        return format.replace(/ss/g, parseInt(countTime))
+      }
+    }
   }
 }
 function dateJs(time,config){
