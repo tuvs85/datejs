@@ -81,8 +81,18 @@ class DateJs{
   stamp(){
     return new Date(this.format(this.config.format)).getTime();
   }
-  countDown(downTime,format){
+  countDown(downTime,format,autoCount = false){
     downTime = upTime(downTime);
+    if (this.time >= downTime){
+      autoCount = false;
+    }
+    if (autoCount){
+      this.countDownTimes = setTimeout(()=>{
+        console.log('countDownTime')
+        DateJs.prototype.time = new Date(new Date(DateJs.prototype.time).getTime() + 1000);
+        this.countDown(downTime,format,autoCount)
+      }, 1000)
+    }
     if (!format){
       if (!downTime){
         return 0;
@@ -121,6 +131,11 @@ class DateJs{
       if (formatMap['ss']){
         return format.replace(/ss/g, parseInt(countTime))
       }
+    }
+  }
+  stopCountDown(){
+    if (this.countDownTimes){
+      clearTimeout(this.countDownTimes)
     }
   }
 }
