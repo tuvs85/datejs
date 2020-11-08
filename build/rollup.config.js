@@ -12,7 +12,7 @@ module.exports = [
   {
     input: resolveFile('src/index.js'),
     output: {
-      file: resolveFile('dist/index.umd.js'),
+      file: resolveFile('dist/datejs.js'),
       format: 'umd',
       name: 'dateJs',
       amd: {

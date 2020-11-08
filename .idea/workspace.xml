@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9dc8030e-3478-4e21-87e3-5faee2cce79c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/rollup.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
     </list>
@@ -48,7 +53,9 @@
       <workItem from="1604498245076" duration="1174000" />
       <workItem from="1604499727970" duration="4251000" />
       <workItem from="1604580151320" duration="1479000" />
-      <workItem from="1604674086328" duration="2558000" />
+      <workItem from="1604674086328" duration="2730000" />
+      <workItem from="1604765854972" duration="2820000" />
+      <workItem from="1604807405356" duration="581000" />
     </task>
     <servers />
   </component>

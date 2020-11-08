@@ -81,7 +81,9 @@ class DateJs{
   stamp(){
     return new Date(this.format(this.config.format)).getTime();
   }
-  countDown(downTime,format,autoCount = false){
+  /*
+  *
+    countDown(downTime,format,autoCount = false){
     downTime = upTime(downTime);
     if (this.time >= downTime){
       autoCount = false;
@@ -138,6 +140,7 @@ class DateJs{
       clearTimeout(this.countDownTimes)
     }
   }
+  * */
 }
 function dateJs(time,config){
   if (isDateJs(this)){
