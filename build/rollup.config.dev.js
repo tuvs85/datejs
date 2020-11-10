@@ -1,6 +1,7 @@
 const path = require('path');
 const serve = require('rollup-plugin-serve');
 const configList = require('./rollup.config');
+const filesize = require('rollup-plugin-filesize');
 
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
@@ -16,6 +17,7 @@ configList.map((config, index) => {
     config.plugins = [
       ...config.plugins,
       ...[
+        filesize(),
         serve({
           port: PORT,
           contentBase: [resolveFile('')]
@@ -23,7 +25,7 @@ configList.map((config, index) => {
       ]
     ]
   }
-  
+
   return config;
 })
 

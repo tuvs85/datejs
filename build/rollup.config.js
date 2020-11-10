@@ -1,5 +1,6 @@
 const path = require('path');
 const { babel } = require('@rollup/plugin-babel');
+const { uglify } = require("rollup-plugin-uglify");
 
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
@@ -12,7 +13,7 @@ module.exports = [
   {
     input: resolveFile('src/index.js'),
     output: {
-      file: resolveFile('dist/datejs.js'),
+      file: resolveFile('lib/datejs.js'),
       format: 'umd',
       name: 'dateJs',
       amd: {
@@ -21,6 +22,7 @@ module.exports = [
     },
     plugins: [
       babel(babelOptions),
+      uglify()
     ],
   },
 
