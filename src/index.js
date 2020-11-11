@@ -32,7 +32,7 @@ class DateJs{
       "$z": this.$z
     } = {
       "$Y": upZero(date.getFullYear()),
-      "$M": upZero(date.getMonth()),
+      "$M": upZero(date.getMonth()+1),
       "$D": upZero(date.getDate()),
       "$h": upZero(date.getHours()),
       "$m": upZero(date.getMinutes()),
@@ -60,7 +60,7 @@ class DateJs{
     const time = {
       "YY": date.getFullYear().toString().slice(2),
       "YYYY": date.getFullYear(),
-      "MM": upZero(date.getMonth()),
+      "MM": upZero(date.getMonth()+1),
       "DD": upZero(date.getDate()),
       "hh": upZero(date.getHours()),
       "mm": upZero(date.getMinutes()),
