@@ -1,0 +1,5 @@
+build/*
+src/*
+index.html
+README.md
+*.js.map
