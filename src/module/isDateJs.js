@@ -1,6 +1,6 @@
 function isDateJs(t){
   if ((typeof t).toLowerCase() === 'object'){
-    if (t.__isDay__){
+    if (t.__isDate__){
       return true;
     }
     return false;

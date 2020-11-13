@@ -15,7 +15,7 @@ class DateJs{
       ...this.defaultConfig,
       ...(formatConfig(config))
     }
-    DateJs.prototype.__isDay__ = true;
+    // this.__isDate__ = true;
     this.init()
   }
   init(){
@@ -143,9 +143,9 @@ class DateJs{
   * */
 }
 function dateJs(time,config){
-  if (isDateJs(this)){
-    return time;
-  }
+  // if (isDateJs(this)){
+  //   return time;
+  // }
   return new DateJs(time,config)
 }
 export default dateJs;
