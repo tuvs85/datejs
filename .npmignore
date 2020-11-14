@@ -1,5 +1,12 @@
-build/*
-src/*
+build
+src
 index.html
-README.md
 *.js.map
+.gitignore
+package-lock.json
+package-err.json
+yarn.lock
+yarn-error.log
+node_modules
+.idea
+.vscode

@@ -15,7 +15,7 @@ class DateJs{
       ...this.defaultConfig,
       ...(formatConfig(config))
     }
-    // this.__isDate__ = true;
+    DateJs.prototype.__isDate__ = true;
     this.init()
   }
   init(){
@@ -143,9 +143,9 @@ class DateJs{
   * */
 }
 function dateJs(time,config){
-  // if (isDateJs(this)){
-  //   return time;
-  // }
+  if (time!== window && isDateJs(time)){
+    return time;
+  }
   return new DateJs(time,config)
 }
 export default dateJs;
