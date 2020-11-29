@@ -4,6 +4,7 @@ import upZero from "./module/upZero";
 import upTime from "./module/upTime";
 import formatTimeZone from "./module/formatTimeZone";
 import isDateJs from "./module/isDateJs";
+import fixNumber from "./module/fixNumber";
 
 class DateJs{
   constructor(time, config) {
@@ -80,6 +81,41 @@ class DateJs{
   }
   stamp(){
     return new Date(this.format(this.config.format)).getTime();
+  }
+
+  add(value) {
+    /*
+    * add 添加函数时间，接受数值、对象格式
+    * 传递数值时  默认当传递为需要增加的小时，
+    * 传递对象时，  进行数据兼容覆盖处理，
+    * 判断是否有day、hour、minute、second
+    * 如果有时 添加对应的时间，并且重新返回出去。
+    *
+    *
+    * */
+    let addObj = {
+      hour: value
+    }
+    if ((typeof value).toLowerCase() === 'object') {
+      delete addObj.hour;
+      addObj = value;
+      for (let z in addObj){
+        addObj[z] = fixNumber(addObj[z])
+      }
+    }
+    if (addObj.day) {
+      this.time = new Date(this.time).getTime() + (addObj.day * 24 * 60 * 60 * 1000)
+    }
+    if (addObj.hour) {
+      this.time = new Date(this.time).getTime() + (addObj.hour * 60 * 60 * 1000)
+    }
+    if (addObj.minute) {
+      this.time = new Date(this.time).getTime() + (addObj.minute * 60 * 1000)
+    }
+    if (addObj.second) {
+      this.time = new Date(this.time).getTime() + (addObj.second * 1000)
+    }
+    return formatTime(this.time)
   }
   /*
   *
