@@ -1,3 +1,4 @@
+import toNumber from "./toNumber";
 const zoneMap = {
 
 }
@@ -8,6 +9,6 @@ function formatTimeZone(timezone){
   if (Number.isNaN(Number(timezone))){
     return zoneMap[timezone]
   }
-  return Number(timezone)
+  return toNumber(timezone)
 }
 export default formatTimeZone

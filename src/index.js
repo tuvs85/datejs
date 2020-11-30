@@ -5,11 +5,13 @@ import upTime from "./module/upTime";
 import formatTimeZone from "./module/formatTimeZone";
 import isDateJs from "./module/isDateJs";
 import fixNumber from "./module/fixNumber";
+import toDate from "./module/toDate";
+import toNumber from "./module/toNumber";
 
 class DateJs{
   constructor(time, config) {
     DateJs.prototype.defaultConfig = {
-      zone: -(new Date().getTimezoneOffset() / 60)
+      zone: -(toDate().getTimezoneOffset() / 60)
     }
     DateJs.prototype.time = formatTime(time) || Date.now();
     DateJs.prototype.config = {
@@ -53,10 +55,10 @@ class DateJs{
     return this;
   }
   format(format) {
-    if (!format) return new Date(this.time);
-    let date = new Date(this.time);
-    if (Number(this.config.zone) !== Number(this.defaultConfig.zone)){
-      date = new Date(date.getTime() + ((this.config.zone - this.defaultConfig.zone) * 60 * 60 * 1000));
+    if (!format) return toDate(this.time);
+    let date = toDate(this.time);
+    if (toNumber(this.config.zone) !== toNumber(this.defaultConfig.zone)){
+      date = toDate(date.getTime() + ((this.config.zone - this.defaultConfig.zone) * 60 * 60 * 1000));
     }
     const time = {
       "YY": date.getFullYear().toString().slice(2),
@@ -80,7 +82,7 @@ class DateJs{
       .replace(/SS/g, time.SS);
   }
   stamp(){
-    return new Date(this.format(this.config.format)).getTime();
+    return toDate(this.format(this.config.format)).getTime();
   }
 
   add(value) {
@@ -104,16 +106,16 @@ class DateJs{
       }
     }
     if (addObj.day) {
-      this.time = new Date(this.time).getTime() + (addObj.day * 24 * 60 * 60 * 1000)
+      this.time = toDate(this.time).getTime() + (addObj.day * 24 * 60 * 60 * 1000)
     }
     if (addObj.hour) {
-      this.time = new Date(this.time).getTime() + (addObj.hour * 60 * 60 * 1000)
+      this.time = toDate(this.time).getTime() + (addObj.hour * 60 * 60 * 1000)
     }
     if (addObj.minute) {
-      this.time = new Date(this.time).getTime() + (addObj.minute * 60 * 1000)
+      this.time = toDate(this.time).getTime() + (addObj.minute * 60 * 1000)
     }
     if (addObj.second) {
-      this.time = new Date(this.time).getTime() + (addObj.second * 1000)
+      this.time = toDate(this.time).getTime() + (addObj.second * 1000)
     }
     return formatTime(this.time)
   }
@@ -127,7 +129,7 @@ class DateJs{
     if (autoCount){
       this.countDownTimes = setTimeout(()=>{
         console.log('countDownTime')
-        DateJs.prototype.time = new Date(new Date(DateJs.prototype.time).getTime() + 1000);
+        DateJs.prototype.time = toDate(toDate(DateJs.prototype.time).getTime() + 1000);
         this.countDown(downTime,format,autoCount)
       }, 1000)
     }
