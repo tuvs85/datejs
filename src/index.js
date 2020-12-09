@@ -117,7 +117,8 @@ class DateJs{
     if (addObj.second) {
       this.time = toDate(this.time).getTime() + (addObj.second * 1000)
     }
-    return formatTime(this.time)
+    return this
+    // return formatTime(this.time)
   }
   /*
   *

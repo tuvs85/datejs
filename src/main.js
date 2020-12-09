@@ -1,4 +1,6 @@
 document.write(window.dateJs('2020-12-07 12:00:00').$stamps)
+document.write('<br/>')
+document.write(window.dateJs((window.dateJs('2020-12-07 12:00:00').add({day:1}))).format('YYYY-MM-DD hh:mm:ss'))
 /*
 
 
